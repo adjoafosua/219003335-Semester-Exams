@@ -1,0 +1,159 @@
+<%- include('parts/header') %>
+<link rel='stylesheet' type='text/css' href='/styles/css/price.css'/>
+</head>
+ <body>
+    <%- include('parts/nav') %>
+    <div class="container">
+        <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+            <h3 class="display-4">New Patient</h3>
+        </div>
+        <div class="form-header">
+            <% if (Object.keys(errors).length === 0) { %>
+            <% } else { %>
+                <h2 class="errors-heading">Oops, please correct the following:</h2>
+                <ul class="errors-list">
+                <% Object.values(errors).forEach(error => { %>
+                    <li><%= error.msg %></li>
+                <% }) %>
+                </ul>
+            <% } %>
+        </div>
+          <div class="form-header">
+            <% if (Object.keys(status) === 'success') { %>
+                <div class="alert alert-success" role="alert">
+                    Patient Details Successfully Saved!
+                </div>
+            <% } else { %>
+            <% } %>
+        </div>
+         <form action="/newPatient" method="post" novalidate>
+                <div class="row">
+                    <!-- First Name -->
+                    <div class="input-group col-lg-6 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-user text-muted"></i>
+                            </span>
+                        </div>
+                        <input id="firstName" type="text" name="firstName" placeholder="First Name" class="form-control bg-white border-left-0 border-md">
+                    </div>
+
+                     <!-- Last Name -->
+                    <div class="input-group col-lg-6 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-user text-muted"></i>
+                            </span>
+                        </div>
+                        <input id="lastName" type="text" name="lastName" placeholder="Last Name" class="form-control bg-white border-left-0 border-md">
+                    </div>
+
+                    <!-- Date of birth -->
+                    <div class="input-group col-lg-6 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-calendar text-muted"></i>
+                            </span>
+                        </div>
+                        <input id="dob" type="date" name="dob" placeholder="Date of Birth" class="form-control bg-white border-left-0 border-md">
+                    </div>
+
+                    <!-- Contact Number -->
+                    <div class="input-group col-lg-6 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-phone text-muted"></i>
+                            </span>
+                        </div>
+                        <input id="contactNumber" type="phone" name="contactNumber" placeholder="Contact Number" class="form-control bg-white border-left-0 border-md">
+                    </div>
+
+                    <!-- Emergancy Contact Number -->
+                    <div class="input-group col-lg-6 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-phone text-muted"></i>
+                            </span>
+                        </div>
+                        <input id="emergancyNumber" type="phone" name="emergancyNumber" placeholder="Emergancy Contact Number" class="form-control bg-white border-left-0 border-md">
+                    </div>
+
+                    <!-- Time -->
+                    <div class="input-group col-lg-6 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-address-card text-muted"></i>
+                            </span>
+                        </div>
+                        <input id="residentialAdress" type="text" name="residentialAdress" placeholder="Residential Address" class="form-control bg-white border-left-0 border-md">
+                    </div>
+
+                     <div class="input-group col-lg-6 mb-4">
+                        <input id="fullname" type="hidden" name="fullname" >
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="form-group col-lg-12 mx-auto mb-0">
+                        <input type="submit" class="btn btn-primary btn-block py-2" value="Save">
+                    </div>
+                </div>
+            </form>
+            <p></p>
+            <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+                <h3 class="display-4">List of Patients</h3>
+            </div>
+            <!-- Patients Table -->
+            <table id="tbl_patients" class="table table-bordered table-striped table-sm">
+                <thead class="thead-light">
+                    <tr>
+                        <td>Patient ID</td>
+                        <td>Patient Name</td>
+                        <td>Phone Number</td>
+                        <td>Emergancy Number</td>
+                        <td>Actions</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (Object.keys(data).length > 0) { 
+                        data.forEach(function(p){%>
+                        <tr>
+                            <td><%=p._id %></td>
+                            <td><%=p.fullname%></td>
+                            <td><%=p.contactNumber %></td>
+                            <td><%=p.emergancyNumber %></td>
+                            <td>
+                                <a href="/editPatient/?id=<%=p._id%>" >Edit</a>
+                                <a href="/deletePatient/?id=<%=p._id%>">Delete</a>
+                            </td>
+                        </tr>
+
+                <% })} else { %>
+                    <tr>
+                        <td colspan="6">No Record Found</td>
+                    </tr> 
+                <% } %>
+                </tbody>
+            </table>
+         
+            <footer class="pt-4 my-md-5 pt-md-5 border-top">
+                <div class="row">
+                <div class="col-12 col-md">
+                    <small class="d-block mb-3 text-muted">Good Health Consult &copy; 2020</small>
+                </div>
+                </div>
+            </footer>
+    </div>
+    <script>
+        $(document).ready(function(){
+            $("#dob").focus(function(){
+                fname = $("#firstName").val().trim()
+                lname = $("#lastName").val().trim()
+                $("#fullname").val(fname + " " +lname)
+            })
+            $('#tbl_patients').DataTable({
+                "columnDefs": [{ "visible": false, "targets": 0 }]
+            })
+        });
+    </script>
+    
+  </body>

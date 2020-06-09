@@ -1,0 +1,80 @@
+<%- include('parts/header') %>
+<link rel='stylesheet' type='text/css' href='/styles/css/price.css'/>
+</head>
+ <body>
+    <%- include('parts/nav') %>
+    <div class="container">
+        <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+            <h3 class="display-4">Consultancy</h3>
+        </div>
+         <form action="#">
+                <div class="row">
+
+                    <!-- First Name -->
+                    <div class="input-group col-lg-6 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-user text-muted"></i>
+                            </span>
+                        </div>
+                        <input id="patient" type="text" name="firstname" placeholder="First Name" class="form-control bg-white border-left-0 border-md">
+                    </div>
+
+                    <!-- Doctor -->
+                    <div class="input-group col-lg-6 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-stethoscope text-muted"></i>
+                            </span>
+                        </div>
+                        <input id="consultDoctor" type="text" name="firstname" placeholder="First Name" class="form-control bg-white border-left-0 border-md">
+                    </div>
+
+                    <!-- Date -->
+                    <div class="input-group col-lg-6 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-calendar text-muted"></i>
+                            </span>
+                        </div>
+                        <input id="consultDate" type="date" name="lastname" placeholder="Last Name" class="form-control bg-white border-left-0 border-md">
+                    </div>
+
+                    <!-- Time -->
+                    <div class="input-group col-lg-6 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-clock-o text-muted"></i>
+                            </span>
+                        </div>
+                        <input id="consultTime" type="time" name="lastname" placeholder="Time" class="form-control bg-white border-left-0 border-md">
+                    </div>
+
+                    <!-- Payment -->
+                    <div class="input-group col-lg-12 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-money text-muted"></i>
+                            </span>
+                        </div>
+                        <input id="consultCost" type="cost" name="cost" placeholder="Consultancy Cost" class="form-control bg-white border-left-0 border-md">
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="form-group col-lg-12 mx-auto mb-0">
+                        <a href="#" class="btn btn-primary btn-block py-2">
+                            <span class="font-weight-bold">Book Appointment</span>
+                        </a>
+                    </div>
+                </div>
+            </form>
+            <footer class="pt-4 my-md-5 pt-md-5 border-top">
+                <div class="row">
+                <div class="col-12 col-md">
+                    <small class="d-block mb-3 text-muted">Good Health Consult &copy; 2020</small>
+                </div>
+                </div>
+            </footer>
+    </div>
+    
+  </body>
